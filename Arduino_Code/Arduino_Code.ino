@@ -11,37 +11,11 @@
 #define btn4 5
 #define btn5 6
 #define btn6 7
-//#define btn7 8
-//#define btn8 9
-//#define btn9 10
-//#define btn10 11
-//#define btn11 12
 #define numberButton 6
 #define pinMin 2
 #define pinMax 7
 
 int strokes[numberButton][9];
-
-//struct key {
-//  int binding1;
-//  int delay1;
-//  int binding2;
-//  int delay2;
-//  int binding3;
-//  int delay3;
-//  int binding4;
-//  int delay4;
-//  int binding5;
-//};
-//
-//struct board {
-//  key k1;
-//  key k2;
-//  key k3;
-//  key k4;
-//  key k5;  
-//  key k6;
-//};
 
 void setup() {
   for (int i = 2; i < 8; i++) {
