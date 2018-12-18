@@ -17,6 +17,7 @@
 #define pinMax 7
 
 int strokes[numberButton][9];
+bool pressed = false;
 
 void setup() {
   for (int i = 2; i < 8; i++) {
@@ -27,7 +28,6 @@ void setup() {
   
   int iterations = 0;
   int h = 0, k = 0;
-  delay(1000);
   while (iterations < numberButton) {
     int addr = (9 * sizeof(int) * h) + (k * sizeof(int));
     int tmpget;
@@ -58,8 +58,8 @@ void loop() {
     int tmp1 = Serial.read();
     delay(100);
     int btnnumber = char(tmp1) - '0';
-    String debugString = "Button Number: ";
-    Serial.println(debugString + btnnumber);
+    //String debugString = "Button Number: ";
+    //Serial.println(debugString + btnnumber);
     if (btnnumber > 0 && btnnumber <= pinMax) {
       int keySeries[9];
       for (int i = 0, j = 0; i < 9 * sizeof(int); i += sizeof(int)) {
@@ -75,7 +75,7 @@ void loop() {
       Serial.println();
       Serial.read();
     } else if (btnnumber == 48) { //Debug: read the EEPROM row. Format {`, button}
-      Serial.println("Reading EEPROM:");
+      //Serial.println("Reading EEPROM:");
       int tmp2 = Serial.read();
       delay(100);
       tmp2 = char(tmp2) - '0';
@@ -89,72 +89,81 @@ void loop() {
       Serial.read();
     }
   }
+  if (!pressed) {
+    if (digitalRead(btn1) == LOW) {
+      const int n = 0;
+      Keyboard.write(strokes[n][0]);
+      delay(strokes[n][1]);
+      Keyboard.write(strokes[n][2]);
+      delay(strokes[n][3]);
+      Keyboard.write(strokes[n][4]);
+      delay(strokes[n][5]);
+      Keyboard.write(strokes[n][6]);
+      delay(strokes[n][7]);
+      Keyboard.write(strokes[n][8]);
+    } else if (digitalRead(btn2) == LOW) {
+      const int n = 1;
+      Keyboard.write(strokes[n][0]);
+      delay(strokes[n][1]);
+      Keyboard.write(strokes[n][2]);
+      delay(strokes[n][3]);
+      Keyboard.write(strokes[n][4]);
+      delay(strokes[n][5]);
+      Keyboard.write(strokes[n][6]);
+      delay(strokes[n][7]);
+      Keyboard.write(strokes[n][8]);
+    } else if (digitalRead(btn3) == LOW) {
+      const int n = 2;
+      Keyboard.write(strokes[n][0]);
+      delay(strokes[n][1]);
+      Keyboard.write(strokes[n][2]);
+      delay(strokes[n][3]);
+      Keyboard.write(strokes[n][4]);
+      delay(strokes[n][5]);
+      Keyboard.write(strokes[n][6]);
+      delay(strokes[n][7]);
+      Keyboard.write(strokes[n][8]);
+    } else if (digitalRead(btn4) == LOW) {
+      const int n = 3;
+      Keyboard.write(strokes[n][0]);
+      delay(strokes[n][1]);
+      Keyboard.write(strokes[n][2]);
+      delay(strokes[n][3]);
+      Keyboard.write(strokes[n][4]);
+      delay(strokes[n][5]);
+      Keyboard.write(strokes[n][6]);
+      delay(strokes[n][7]);
+      Keyboard.write(strokes[n][8]);
+    } else if (digitalRead(btn5) == LOW) {
+      const int n = 4;
+      Keyboard.write(strokes[n][0]);
+      delay(strokes[n][1]);
+      Keyboard.write(strokes[n][2]);
+      delay(strokes[n][3]);
+      Keyboard.write(strokes[n][4]);
+      delay(strokes[n][5]);
+      Keyboard.write(strokes[n][6]);
+      delay(strokes[n][7]);
+      Keyboard.write(strokes[n][8]);
+    } else if (digitalRead(btn6) == LOW) {
+      const int n = 5;
+      Keyboard.write(strokes[n][0]);
+      delay(strokes[n][1]);
+      Keyboard.write(strokes[n][2]);
+      delay(strokes[n][3]);
+      Keyboard.write(strokes[n][4]);
+      delay(strokes[n][5]);
+      Keyboard.write(strokes[n][6]);
+      delay(strokes[n][7]);
+      Keyboard.write(strokes[n][8]);
+    }
+  }
 
-  if (digitalRead(btn1) == LOW) {
-    const int n = 0;
-    Keyboard.write(strokes[n][0]);
-    delay(strokes[n][1]);
-    Keyboard.write(strokes[n][2]);
-    delay(strokes[n][3]);
-    Keyboard.write(strokes[n][4]);
-    delay(strokes[n][5]);
-    Keyboard.write(strokes[n][6]);
-    delay(strokes[n][7]);
-    Keyboard.write(strokes[n][8]);
-  } else if (digitalRead(btn2) == LOW) {
-    const int n = 1;
-    Keyboard.write(strokes[n][0]);
-    delay(strokes[n][1]);
-    Keyboard.write(strokes[n][2]);
-    delay(strokes[n][3]);
-    Keyboard.write(strokes[n][4]);
-    delay(strokes[n][5]);
-    Keyboard.write(strokes[n][6]);
-    delay(strokes[n][7]);
-    Keyboard.write(strokes[n][8]);
-  } else if (digitalRead(btn3) == LOW) {
-    const int n = 2;
-    Keyboard.write(strokes[n][0]);
-    delay(strokes[n][1]);
-    Keyboard.write(strokes[n][2]);
-    delay(strokes[n][3]);
-    Keyboard.write(strokes[n][4]);
-    delay(strokes[n][5]);
-    Keyboard.write(strokes[n][6]);
-    delay(strokes[n][7]);
-    Keyboard.write(strokes[n][8]);
-  } else if (digitalRead(btn4) == LOW) {
-    const int n = 3;
-    Keyboard.write(strokes[n][0]);
-    delay(strokes[n][1]);
-    Keyboard.write(strokes[n][2]);
-    delay(strokes[n][3]);
-    Keyboard.write(strokes[n][4]);
-    delay(strokes[n][5]);
-    Keyboard.write(strokes[n][6]);
-    delay(strokes[n][7]);
-    Keyboard.write(strokes[n][8]);
-  } else if (digitalRead(btn5) == LOW) {
-    const int n = 4;
-    Keyboard.write(strokes[n][0]);
-    delay(strokes[n][1]);
-    Keyboard.write(strokes[n][2]);
-    delay(strokes[n][3]);
-    Keyboard.write(strokes[n][4]);
-    delay(strokes[n][5]);
-    Keyboard.write(strokes[n][6]);
-    delay(strokes[n][7]);
-    Keyboard.write(strokes[n][8]);
-  } else if (digitalRead(btn6) == LOW) {
-    const int n = 5;
-    Keyboard.write(strokes[n][0]);
-    delay(strokes[n][1]);
-    Keyboard.write(strokes[n][2]);
-    delay(strokes[n][3]);
-    Keyboard.write(strokes[n][4]);
-    delay(strokes[n][5]);
-    Keyboard.write(strokes[n][6]);
-    delay(strokes[n][7]);
-    Keyboard.write(strokes[n][8]);
+  for (int i = 2; i < 8; i++) { //Anti-multipress
+    if (digitalRead(i) == LOW) {
+      pressed = true;
+      break;
+    }
+    else pressed = false;
   }
 }
