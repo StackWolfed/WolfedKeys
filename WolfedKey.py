@@ -23,7 +23,10 @@ def editButton():
     buffer = []
     for i in range(0, 9):
         if i % 2 == 0:
-            buffer.append(str(input(i)))
+            futureButton = str(input(i))
+            if futureButton == "":
+                futureButton = "\x00"
+            buffer.append(futureButton)
         else:
             buffer.append(str(chr(int(float(input(i))))))
     sendMsg = ""
