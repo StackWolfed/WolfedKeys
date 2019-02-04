@@ -8,5 +8,8 @@ Simply open a terminal or cmd in the project folder and run:
 # What I used
   * C/C++ (Arduino)
   * Python
+  * Cura
+  * Blender
+  * Anet A8
 
 I've also learnt about serial communication with hardware
