@@ -8,7 +8,7 @@ for p in ports:
 try:
     ser = serial.Serial(devicePort, 9600, timeout=10)
 except:
-    print("Belin, we got an error connecting to the Arduino, please make sure it's connected before launching this")
+    print("We got an error connecting to the Arduino, please make sure it's connected before launching this")
     exit()
 #
 # userin = input("> ")
